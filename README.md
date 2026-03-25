@@ -1,22 +1,24 @@
-# Financial Data Tracker 📈
+# Financial Data Tracker & AI Analyzer 📈🤖
 
-A lightweight automated Python pipeline that extracts real-time currency exchange rates using a RESTful API and loads the data into a local relational database for historical tracking. 
+A lightweight automated Python ETL pipeline that extracts real-time currency exchange rates, stores them in a local relational database, and leverages an LLM to generate instant financial insights. The project is fully containerized using Docker for seamless deployment.
 
-This project demonstrates core Data Engineering and Backend Development principles, including API integration, data extraction, and data persistence.
+This project demonstrates core Data Engineering, Backend Development, and DevOps principles.
 
 ## Features
-- **REST API Integration:** Fetches real-time exchange rates (USD to PLN and EUR) via the [Frankfurter API](https://www.frankfurter.app/).
-- **Data Parsing:** Processes JSON responses to extract specific financial metrics.
-- **Data Persistence:** Uses `sqlite3` to securely store historical exchange rates in a local SQLite database using parameterized SQL queries to prevent injections.
+- **ETL Pipeline & API Integration:** Fetches real-time exchange rates (USD to PLN and EUR) via the [Frankfurter API](https://www.frankfurter.app/).
+- **AI Financial Analysis:** Integrates the `OpenAI API` to generate automated, short-form financial summaries based on the extracted currency data.
+- **Data Persistence:** Uses `sqlite3` to securely store historical exchange rates using parameterized SQL queries to prevent injections.
+- **Containerization:** Fully Dockerized application, ensuring consistent execution across different environments (e.g., local machines, Azure, AWS).
 
 ## Technologies Used
-- **Python 3**
-- **Libraries:** `requests`, `sqlite3`
-- **Database:** SQLite
+- **Language:** Python 3.11
+- **Libraries:** `requests`, `sqlite3`, `openai`
+- **Infrastructure:** Docker
 
 ## Setup & Execution
+
+### Option 1: Run via Docker (Recommended)
 1. Clone the repository.
-2. Create and activate a virtual environment:
+2. Build the Docker image:
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use: venv\Scripts\activate
+   docker build -t finance-tracker .
