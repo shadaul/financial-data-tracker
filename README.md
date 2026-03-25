@@ -1,4 +1,4 @@
-# Financial Data Tracker & AI Analyzer 📈🤖
+# Financial Data Tracker & AI Analyzer 
 
 A lightweight automated Python ETL pipeline that extracts real-time currency exchange rates, stores them in a local relational database, and leverages an LLM to generate instant financial insights. The project is fully containerized using Docker for seamless deployment.
 
