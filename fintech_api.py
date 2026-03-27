@@ -16,11 +16,11 @@ def timer_decorator(func):
 
 
 class FinanceTracker:
-    def __init__(self):
+    def __init__(self) -> None:
         self.db_name = "finance.db"
 
 
-    def get_ai_analysis(self, date, pln, eur):
+    def get_ai_analysis(self, date: str, pln: float, eur: float) -> None:
         client = OpenAI(api_key="openai_api_key")
 
         prompt = f"act as a financial analyst. On {date}, 1 USD = {pln} PLN and 1 EUR = {eur} EUR. Write a short 1-sentence summary for an investor."
@@ -42,7 +42,7 @@ class FinanceTracker:
 
 
     @timer_decorator
-    def get_exchange_rates(self):
+    def get_exchange_rates(self) -> None:
         url = "https://api.frankfurter.app/latest?from=USD&to=PLN,EUR"
 
         response = requests.get(url)
@@ -61,8 +61,8 @@ class FinanceTracker:
 
 
 
-    def save_to_database(self, date, pln, eur):
-        conn = sqlite3.connect('self.db_name')
+    def save_to_database(self, date: str, pln: float, eur: float) -> None:
+        conn = sqlite3.connect(self.db_name)
         cursor = conn.cursor()
         cursor.execute("CREATE TABLE IF NOT EXISTS rates (date TEXT, pln REAL, eur REAL)")
         cursor.execute("INSERT INTO rates VALUES (?, ? ,?)", (date, pln, eur))
